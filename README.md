@@ -30,7 +30,7 @@ result, out = SE.exe(cmd)
 
 if result != 0:
     print("execution error")
-    eys.exit(1)
+    sys.exit(1)
 
 else:
     print(out)
