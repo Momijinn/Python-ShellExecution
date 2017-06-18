@@ -1,0 +1,2 @@
+# Python-ShellExecution
+pythonにて外部シェルを簡単に実行できるライブラリ
