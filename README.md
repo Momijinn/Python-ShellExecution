@@ -21,21 +21,22 @@ pythonにて外部シェルを簡単に実行できるライブラリ
 
 
 # Example
+example.py
 ```python
+# -*- coding:utf-8 -*-
+#!/usr/bin/env python
 import ShellExecution as SE
 import sys
 
-cmd = "dir"
-result, out = SE.exe(cmd)
+cmd = "hello_world.exe"
+
+
+result, out = SE.exe(cmd) #SE.exe(execution)
 
 if result != 0:
-    print("execution error")
-    sys.exit(1)
+    print("error")
+    sys.exit()
 
 else:
-    print(out)
-    '''
-    output
-    hogehoge.exe hello.c test.py
-    '''
+    print(out) #hello_world
 ```
