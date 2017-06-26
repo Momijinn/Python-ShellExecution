@@ -3,17 +3,22 @@
 import ShellExecution as SE
 import sys
 
-cmd = "hello_world.exe"
+print("######exe#####")
+cmd = "python test1.py"
 
-'''
-result: 0(success) or 1(failed)
-out:Execution result
-'''
-result, out = SE.exe(cmd) #SE.exe(execution)
+result, out = SE.exe(cmd)
 
 if result != 0:
     print("error")
     sys.exit()
-
 else:
-    print(out) #hello_world
+    print(out)
+
+
+print("#####realtime_exe#####")
+#バッファーにためないようにするためにすることをすること!
+#https://stackoverflow.com/questions/2804543/read-subprocess-stdout-line-by-line
+#ex) python -u hogehoge.py
+cmd = "python -u test2.py"
+for line in SE.realtime_exe(cmd):
+    print(line)

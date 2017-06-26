@@ -6,18 +6,19 @@ pythonにて外部シェルを簡単に実行できるライブラリ
 * python 3.5
 
 # 使いかた
-このプログラムをファイルにおき、インポートしてくれれば動きます
+ShellExecution.pyをファイルにおき、インポートしてくれれば動きます
 
-引数が2つ出ます
+# 関数の説明
+## 1. exe
+    外部シェルが終了したら、正常に実行できたかの有無と実行結果渡します
 
-1. 実行が成功したかの有無
+## 2. realtime_exe
+    途中で出力される標準出力結果をリアルタイムで出力します
 
-    * 0 : 実行成功
-    * それ以外 : 実行失敗
+    これを実行するときは、for文等でループをさせて置いてください
 
-2. 実行結果
+    また、使用環境に応じてライブラリ内の文字コードをを適宜変えてください
 
-    *実行結果が来ます(print等で出力したものでてくるので注意)
 
 
 # Example
@@ -28,15 +29,20 @@ example.py
 import ShellExecution as SE
 import sys
 
-cmd = "hello_world.exe"
+print("######exe#####")
+cmd = "python test1.py"
 
-
-result, out = SE.exe(cmd) #SE.exe(execution)
+result, out = SE.exe(cmd)
 
 if result != 0:
     print("error")
     sys.exit()
-
 else:
-    print(out) #hello_world
+    print(out)
+
+
+print("#####realtime_exe#####")
+cmd = "python -u test2.py"
+for line in SE.realtime_exe(cmd):
+    print(line)
 ```
